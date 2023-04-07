@@ -1,7 +1,7 @@
 import 'package:appjam_project/constants/colors.dart';
-import 'package:appjam_project/ui/home/home_page.dart';
 import 'package:appjam_project/ui/Register/register_page.dart';
 import 'package:appjam_project/ui/introduction/introduction_page.dart';
+import 'package:appjam_project/widgets/bottom_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       IconButton(
                           onPressed: () {
-                            Get.offAll(IntroductionPage());
+                            Get.offAll(const IntroductionPage());
                           },
                           icon: const Icon(
                             Icons.arrow_back_rounded,
@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                             hintText: "Password",
                             obscureText: true,
                             suffixIcon: Container(
-                              margin: EdgeInsets.all(15),
+                              margin: const EdgeInsets.all(15),
                               child: Image.asset(
                                 "assets/icons/hide.png",
                                 width: 5,
@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                             isBorder: false,
                             isFilled: true,
                             onTap: () {
-                              Get.to(const HomePage());
+                              Get.to(BottomBarWidget());
                             },
                             child: Center(
                                 child: Text(
@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 12),
                             child: Row(
-                              children: [
+                              children: const [
                                 Expanded(
                                   child: Divider(
                                     color: darkBlueColor,

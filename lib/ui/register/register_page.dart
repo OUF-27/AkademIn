@@ -43,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       IconButton(
                           onPressed: () {
-                            Get.offAll(IntroductionPage());
+                            Get.offAll(const IntroductionPage());
                           },
                           icon: const Icon(
                             Icons.arrow_back_rounded,
@@ -119,9 +119,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             )),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: 12),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
                             child: Row(
-                              children: [
+                              children: const [
                                 Expanded(
                                   child: Divider(
                                     color: darkBlueColor,

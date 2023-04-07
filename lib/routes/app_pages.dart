@@ -1,12 +1,16 @@
+import 'package:appjam_project/bindings/add_content_binding.dart';
 import 'package:appjam_project/bindings/home_binding.dart';
 import 'package:appjam_project/bindings/introduction_binding.dart';
 import 'package:appjam_project/bindings/login_binding.dart';
+import 'package:appjam_project/bindings/profile_binding.dart';
 import 'package:appjam_project/bindings/register_binding.dart';
 import 'package:appjam_project/main.dart';
 import 'package:appjam_project/ui/Login/login_page.dart';
 import 'package:appjam_project/ui/Register/register_page.dart';
+import 'package:appjam_project/ui/add%20content/add_content_page.dart';
 import 'package:appjam_project/ui/home/home_page.dart';
 import 'package:appjam_project/ui/introduction/introduction_page.dart';
+import 'package:appjam_project/ui/profile/profile_page.dart';
 import 'package:get/get.dart';
 
 part './app_routes.dart';
@@ -30,5 +34,13 @@ class AppPages {
         page: () => const RegisterPage(),
         binding: RegisterBinding()),
     GetPage(name: Routes.MYAPP, page: () => MyApp()),
+    GetPage(
+        name: Routes.PROFILE,
+        page: () => const ProfilePage(),
+        binding: ProfileBinding()),
+    GetPage(
+        name: Routes.ADDCONTENT,
+        page: () => const AddContentPage(),
+        binding: AddContentBinding()),
   ];
 }

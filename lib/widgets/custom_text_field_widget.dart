@@ -17,9 +17,10 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: 6),
       child: TextField(
-        style: TextStyle(color: darkBlueColor, fontWeight: FontWeight.w600),
+        style:
+            const TextStyle(color: darkBlueColor, fontWeight: FontWeight.w600),
         obscureText: obscureText,
         decoration: InputDecoration(
             contentPadding:
