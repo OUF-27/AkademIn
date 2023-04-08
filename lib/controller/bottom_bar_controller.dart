@@ -1,15 +1,32 @@
 import 'package:appjam_project/ui/add%20content/add_content_page.dart';
 import 'package:appjam_project/ui/home/home_page.dart';
 import 'package:appjam_project/ui/profile/profile_page.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/user_provider.dart';
 
 class BottomBarController extends GetxController {
   final controller = PersistentTabController(initialIndex: 0).obs;
 
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    addData();
+  }
+
+  addData() async {
+    UserProvider userProvider = Provider.of(Get.context!, listen: false);
+    await userProvider.refreshUser();
+  }
+
+  @override
   List<Widget> buildScreens() {
-    return [const HomePage(), const AddContentPage(), const ProfilePage()];
+    return [const HomePage(), AddContentPage(), ProfilePage()];
   }
 
   List<PersistentBottomNavBarItem> navBarsItems() {

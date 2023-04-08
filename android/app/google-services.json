@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "126756532656",
+    "project_id": "akademin-e1ad5",
+    "storage_bucket": "akademin-e1ad5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126756532656:android:f3bd11b2f8b622becf6675",
+        "android_client_info": {
+          "package_name": "com.example.appjam_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126756532656-smjht57mi21f7u09odl0pltauqbc4v2f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appjam_project",
+            "certificate_hash": "7c0691d56e99d401d845c118d3f8c86631988f63"
+          }
+        },
+        {
+          "client_id": "126756532656-h7l7oo086sjcu81fs4154e8qa5dbgcrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBqfb7_NOscQQpfvjyGeL441huHcKcepo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126756532656-h7l7oo086sjcu81fs4154e8qa5dbgcrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,10 @@
+import 'package:appjam_project/controller/login_controller.dart';
+import 'package:appjam_project/controller/register_conroller.dart';
 import 'package:appjam_project/ui/home/home_page.dart';
 import 'package:appjam_project/ui/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../Widgets/custom_button_widget.dart';
 import '../../Widgets/custom_text_field_widget.dart';
@@ -16,10 +19,12 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final controller = Get.put(RegisterController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: GestureDetector(
             onTap: () {
               FocusScope.of(context).unfocus();
@@ -76,24 +81,18 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                           ),
-                          const CustomTextField(
+                          CustomTextField(
+                            hintText: "Username",
+                            controller: controller.username.value,
+                          ),
+                          CustomTextField(
                             hintText: "E-mail",
+                            controller: controller.email.value,
                           ),
                           CustomTextField(
                             hintText: "Password",
                             obscureText: true,
-                            suffixIcon: Container(
-                              margin: const EdgeInsets.all(15),
-                              child: Image.asset(
-                                "assets/icons/hide.png",
-                                width: 5,
-                                color: darkBlueColor,
-                              ),
-                            ),
-                          ),
-                          CustomTextField(
-                            hintText: "Confirm Password",
-                            obscureText: true,
+                            controller: controller.password.value,
                             suffixIcon: Container(
                               margin: const EdgeInsets.all(15),
                               child: Image.asset(
@@ -106,17 +105,24 @@ class _RegisterPageState extends State<RegisterPage> {
                           CustomButton(
                             isBorder: false,
                             isFilled: true,
-                            onTap: () {
-                              Get.to(const HomePage());
-                            },
-                            child: Center(
-                                child: Text(
-                              "Sign Up",
-                              style: TextStyle(
-                                  color: const Color.fromARGB(255, 26, 43, 90),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: Get.width / 24),
-                            )),
+                            onTap: controller.register,
+                            child: Obx(() => Center(
+                                child: controller.isLoading.value
+                                    ? SizedBox(
+                                        width: Get.width * 0.05,
+                                        height: Get.width * 0.05,
+                                        child: CircularProgressIndicator(
+                                          color: greenColor,
+                                        ),
+                                      )
+                                    : Text(
+                                        "Sign Up",
+                                        style: TextStyle(
+                                            color: const Color.fromARGB(
+                                                255, 26, 43, 90),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: Get.width / 24),
+                                      ))),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 12),

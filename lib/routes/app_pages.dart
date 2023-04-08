@@ -36,11 +36,13 @@ class AppPages {
     GetPage(name: Routes.MYAPP, page: () => MyApp()),
     GetPage(
         name: Routes.PROFILE,
-        page: () => const ProfilePage(),
+        page: () => ProfilePage(),
         binding: ProfileBinding()),
-    GetPage(
-        name: Routes.ADDCONTENT,
-        page: () => const AddContentPage(),
-        binding: AddContentBinding()),
+    // GetPage(
+    //     name: Routes.ADDCONTENT,
+    //     page: () => AddContentPage(
+    //           camera: null,
+    //         ),
+    //     binding: AddContentBinding()),
   ];
 }

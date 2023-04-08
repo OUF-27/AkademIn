@@ -1,4 +1,5 @@
 import 'package:appjam_project/constants/colors.dart';
+import 'package:appjam_project/controller/login_controller.dart';
 import 'package:appjam_project/ui/Register/register_page.dart';
 import 'package:appjam_project/ui/introduction/introduction_page.dart';
 import 'package:appjam_project/widgets/bottom_bar_widget.dart';
@@ -16,10 +17,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final controller = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: GestureDetector(
             onTap: () {
               FocusScope.of(context).unfocus();
@@ -75,12 +78,13 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          const CustomTextField(
-                            hintText: "E-mail",
-                          ),
+                          CustomTextField(
+                              hintText: "E-mail",
+                              controller: controller.email.value),
                           CustomTextField(
                             hintText: "Password",
                             obscureText: true,
+                            controller: controller.password.value,
                             suffixIcon: Container(
                               margin: const EdgeInsets.all(15),
                               child: Image.asset(
@@ -107,17 +111,23 @@ class _LoginPageState extends State<LoginPage> {
                           CustomButton(
                             isBorder: false,
                             isFilled: true,
-                            onTap: () {
-                              Get.to(BottomBarWidget());
-                            },
-                            child: Center(
-                                child: Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: const Color.fromARGB(255, 26, 43, 90),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: Get.width / 24),
-                            )),
+                            onTap: controller.login,
+                            child: Obx(() => Center(
+                                child: controller.isLoading.value
+                                    ? SizedBox(
+                                        width: Get.width * 0.05,
+                                        height: Get.width * 0.05,
+                                        child: CircularProgressIndicator(
+                                          color: greenColor,
+                                        ))
+                                    : Text(
+                                        "Login",
+                                        style: TextStyle(
+                                            color: const Color.fromARGB(
+                                                255, 26, 43, 90),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: Get.width / 24),
+                                      ))),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 12),

@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-class BottomBarWidget extends StatelessWidget {
-  final controller = Get.put(BottomBarController());
+class BottomBarWidget extends StatefulWidget {
+  const BottomBarWidget({super.key});
 
-  BottomBarWidget({super.key});
+  @override
+  State<BottomBarWidget> createState() => _BottomBarWidgetState();
+}
+
+class _BottomBarWidgetState extends State<BottomBarWidget> {
+  final controller = Get.put(BottomBarController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +30,9 @@ class BottomBarWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
         colorBehindNavBar: Colors.white,
       ),
+      onItemSelected: (value) {
+        print(value);
+      },
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
       itemAnimationProperties: const ItemAnimationProperties(
